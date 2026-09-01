@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+data/not_in_db/
+data/species_keys/
+data/focal_species_list.csv
+data/unique_coords_2026-09-01.csv
+data/updated_lat_lon.xlsx
+data/uwin_coords_ghm_1km.csv
+data/uwin_names_resolve.csv
