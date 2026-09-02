@@ -3,6 +3,10 @@
 ### [Neil A. Gilbert](https://gilbertecology.com) and the [Urban Wildlife Information Network](https://www.urbanwildlifeinfo.org/)
 
 ### Data/code DOI: 
+
+### Link to paper: TBD
+
+#### Please contact the first author with any questions: Neil A. Gilbert (neil.gilbert@okstate.edu)
 __________________________________________________________________________________________________________________________________________
 
 ## Abstract
@@ -69,5 +73,4 @@ results suggest a need to consider landscape context when evaluating the roles o
 
 ### results
  * [detection_model_v01.RData](./results/detection_model_v01.RData) `glmmTMB` model object, named `m1`, for occurrence analysis. Code to perform final data formatting and model fitting is in [full_script.R](./code/full_script.R), but the model object is provided here as a shortcut to avoid rerunning model if need be (moderately computationally intensive; took ~20 minutes to fit on a desktop)
- * [richness_model_v01.RData](./results/richness_model_v01.RData) `glmmTMB` model object, named `sr_m1`, for richness analysis. Code to perform final data formatting and model fitting is in [full_script.R](./code/full_script.R), but the model object is provided here as a shortcut to avoid rerunning model if need be (moderately computationally intensive; took ~5 minutes to fit on a desktop)
- * 
+ * [richness_model_v01.RData](./results/richness_model_v01.RData) `glmmTMB` model object, named `sr_m1`, for richness analysis. Code to perform final data formatting and model fitting is in [full_script.R](./code/full_script.R), but the model object is provided here as a shortcut to avoid rerunning model if need be (moderately computationally intensive; took ~5 minutes to fit on a desktop) 
