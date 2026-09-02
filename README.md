@@ -22,6 +22,6 @@ results suggest a need to consider landscape context when evaluating the roles o
 ### data
  * [baar_camera_locations_fuzzed.shp](./data/baar_camera_locations_fuzzed.shp) Shapefile (other file extensions also included but not listed here) with camera locations (with noise added to protect locations) for Bariloche, Argentina; these are used in the making of Figure 1E.
  * [city_locations.shp](./data/city_locations.shp) Shapefile (other file extensions also included by not listed here) with locations of cities included in the analysis. Used to make Figure 1D.
- * [elton_mammal.txt](./data/elton_mammal.txt) Text file with EltonTraits data. Full details, including metadata, can be found in [Wilman et al. 2014](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-1917.1). The 'BodyMass-Value' column is the only trait information used.    
+ * [elton_mammal.txt](./data/elton_mammal.txt) Text file with EltonTraits data. Full details, including metadata, can be found in [Wilman et al. 2014](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-1917.1). The `BodyMass-Value` column is the only trait information used.    
 
 ### results
