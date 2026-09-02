@@ -17,6 +17,7 @@ results suggest a need to consider landscape context when evaluating the roles o
 ## Repository Directory
 
 ### code
+ * [full_script.R](./code/full_script.R) Script to format data, fit models, and visualize results. 
 
 ### data
 
