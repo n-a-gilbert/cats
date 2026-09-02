@@ -40,4 +40,14 @@ results suggest a need to consider landscape context when evaluating the roles o
   | ncat | double | Number of days during the sampling campaign that a domestic cat was detected at the camera |
   | pcat | double| Proportion of days during the sampling campaign that a domestic cat was detected at the camera |       
 
+ * [gHM_buffer5km.tif](./data/gHM_buffer5km.tif) Raster of the [Global Human Modification layer](https://developers.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification) for the Bariloche, Argentina, study area; used to create Fig. 1E. The data layer was cropped and exported from Google Earth Engine.
+ * [iucn_name_list_query.csv](iucn_name_list_query.csv) Crosswalk table for UWIN species labels and scientific names according to IUCN. Note that this table has more rows than taxa included in the analysis because some of the broader taxonomic entities included in analysis (e.g., `weasel_sp`) correspond to multiple scientific names. Also note that taxonomic inconsistencies required that some scientific names be updated in [full_script.R](./code/full_script.R) for joining with [elton_mammal.txt](./data/elton_mammal.txt).
+
+| Column name | Type | Description |
+|-------------|-----|--------------|
+| sp | character | Species label; this is a UWIN-specific common name, and corresponds to the `Species` column in the `all` dataframe included in [formatted_data.RData](./data/formatted_data.RData) |
+| sci_name | character | Scientific name according to IUCN |
+
+
+ * 
 ### results
