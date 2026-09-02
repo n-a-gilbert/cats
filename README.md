@@ -12,7 +12,7 @@ mammal species and 2) species richness. We found synergistic negative effects of
 doubled the number of species lost over urbanization gradients compared to scenarios without cat activity. By identifying synergies between urbanization and cats as stressors to wildlife, our
 results suggest a need to consider landscape context when evaluating the roles of cats as predators, competitors, and disease reservoirs for communities of terrestrial mammals in cities.
 
- $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ <img src="https://github.com/n-a-gilbert/cats/blob/main/figures/figure_01.png" width="600" />
+ $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ <img src="https://github.com/n-a-gilbert/cats/blob/main/figures/figure_01.png" width="600" />
 
 ## Repository Directory
 
