@@ -20,5 +20,8 @@ results suggest a need to consider landscape context when evaluating the roles o
  * [full_script.R](./code/full_script.R) Script to format data, fit models, and visualize results; we follow the advice of [Kellner et al. 2024](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecy.4475) to provide all code in one script. **NOTE:** Due to data sharing expectations of the Urban Wildlife Information Network, we cannot share the raw photo-detection data tables with geographic coordinates. Thus, we commented out the first section of the script that formats these data, and provide the formatted data object in this repository such that it can be loaded to re-run analyses and produce visualizations.  
 
 ### data
+ * [baar_camera_locations_fuzzed.shp](./data/baar_camera_locations_fuzzed.shp) Shapefile (other file extensions also included but not listed here) with camera locations (with noise added to protect locations) for Bariloche, Argentina; these are used in the making of Figure 1E.
+ * [city_locations.shp](./data/city_locations.shp) Shapefile (other file extensions also included by not listed here) with locations of cities included in the analysis. Used to make Figure 1D.
+ * [elton_mammal.txt](./data/elton_mammal.txt) Text file with EltonTraits data. Full details, including metadata, can be found in [Wilman et al. 2014](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-1917.1). The 'BodyMass-Value' column is the only trait information used.    
 
 ### results
