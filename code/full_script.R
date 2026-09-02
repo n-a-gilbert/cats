@@ -1620,7 +1620,7 @@ cities <- sf::st_read(here::here("data/city_locations.shp"))
 # fuzzed camera locations for Bariloche
 baar <- sf::st_read(here::here("data/baar_camera_locations_fuzzed.shp"))
 
-( figure_1d <- ggplot() +
+( figure_01d <- ggplot() +
     geom_sf(data = land, fill = "gray60", color = NA, linewidth = 0.2) +
     geom_sf(data = cities, color = wes_palette("Darjeeling1")[[1]], size = 0.75) +
     theme_void() +
@@ -1631,7 +1631,7 @@ baar <- sf::st_read(here::here("data/baar_camera_locations_fuzzed.shp"))
       axis.title = element_blank()) )
 
 ggsave(
-  here::here("figures/figure_1d.png"),
+  here::here("figures/figure_01d.png"),
   width = 6, 
   height = 3.5, 
   units ="in", 
