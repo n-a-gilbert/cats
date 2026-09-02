@@ -22,6 +22,22 @@ results suggest a need to consider landscape context when evaluating the roles o
 ### data
  * [baar_camera_locations_fuzzed.shp](./data/baar_camera_locations_fuzzed.shp) Shapefile (other file extensions also included but not listed here) with camera locations (with noise added to protect locations) for Bariloche, Argentina; these are used in the making of Figure 1E.
  * [city_locations.shp](./data/city_locations.shp) Shapefile (other file extensions also included by not listed here) with locations of cities included in the analysis. Used to make Figure 1D.
- * [elton_mammal.txt](./data/elton_mammal.txt) Text file with EltonTraits data. Full details, including metadata, can be found in [Wilman et al. 2014](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-1917.1). The `BodyMass-Value` column is the only trait information used.    
+ * [elton_mammal.txt](./data/elton_mammal.txt) Text file with EltonTraits data. Full details, including metadata, can be found in [Wilman et al. 2014](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-1917.1). The `BodyMass-Value` column is the only trait information used.
+ * [formatted_data.RData](./data/formatted_data.RData) RData object containing one dataframe, `all`, which provides formatted species detection data. Each row represents a detection record for an individual camera during one sampling campaigan. The table has the following columns:
+
+  | Column name | Type | Description |
+  |-------------|------|-------------|
+  | Species | character | Species label; this is a UWIN-specific common name. Scientific names are provided in [iucn_name_list_query.csv](./data/iucn_name_list_query.csv) |
+  | Season | character | Sampling campaign; the first two characters represent season (SP = spring, SU = summer, FA = fall, WI = winter), and the last two characters represent year (e.g., 21 = 2021 |
+  | Site | character | Site (camera location) identifier |
+  | City | character | City identifier |
+  | Crs | double | Coordinate reference system for site coordinates; note that the coordinates are redacted per data sharing policies |
+  | Y | double | Count of how many days during the campaign that the species was detected at the camera location |
+  | J | double | Number of days the camera was active during the sampling campaign |
+  | start | date | Start date of the sampling campaign |
+  | end | date | End date of the sampling campaign |
+  | ghm | double | Value of the [Global Human Modification layer](https://developers.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification) extracted at camera coordinates. This was performed in Google Earth Engine. The value ranges from 0 (low human disturbance) to 1 (maximum human disturbance) |
+  | ncat | double | Number of days during the sampling campaign that a domestic cat was detected at the camera |
+  | pcat | double| Proportion of days during the sampling campaign that a domestic cat was detected at the camera |       
 
 ### results
