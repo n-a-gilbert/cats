@@ -11,3 +11,11 @@ wildlife monitoring collaboration (40 cities, 3,339 unique sites, >900,000 camer
 mammal species and 2) species richness. We found synergistic negative effects of cats and urbanization on wildlife: modest cat activity (cats detected on 20% of sampling days) more than
 doubled the number of species lost over urbanization gradients compared to scenarios without cat activity. By identifying synergies between urbanization and cats as stressors to wildlife, our
 results suggest a need to consider landscape context when evaluating the roles of cats as predators, competitors, and disease reservoirs for communities of terrestrial mammals in cities.
+
+## Repository Directory
+
+### code
+
+### data
+
+### results
