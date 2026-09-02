@@ -48,6 +48,23 @@ results suggest a need to consider landscape context when evaluating the roles o
 | sp | character | Species label; this is a UWIN-specific common name, and corresponds to the `Species` column in the `all` dataframe included in [formatted_data.RData](./data/formatted_data.RData) |
 | sci_name | character | Scientific name according to IUCN |
 
+### figures
 
- * 
+ * [figure_01.png](./figures/figure_01.png) Figure 1. This is exported from the [figure_01.pptx](./figures/figure_01.pptx) file.
+ * [figure_01.pptx](./figures/figure_01.pptx) PowerPoint file used to assemble and annotate panels of Figure 1.
+ * [figure_01d.png](./figures/figure_01d.png) Panel D of Figure 1, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_01e.png](./figures/figure_01e.png) Panel E of Figure 1, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_02.png](./figures/figure_02.png) Figure 2. This is exported from the [figure_02.pptx](./figures/figure_02.pptx) file.
+ * [figure_02.pptx](./figures/figure_02.pptx) PowerPoint file used to assemble and annotate panels of Figure 2.
+ * [figure_02a.png](./figures/figure_02a.png) Panel A of Figure 2, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_02b.png](./figures/figure_02b.png) Panel B of Figure 2, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_03.png](./figures/figure_03.png) Figure 3. This is exported from the [figure_03.pptx](./figures/figure_03.pptx) file.
+ * [figure_03.pptx](./figures/figure_03.pptx) PowerPoint file used to assemble and annotate panels of Figure 3.
+ * [figure_03a.png](./figures/figure_03a.png) Panel A of Figure 3, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_03b.png](./figures/figure_03b.png) Panel B of Figure 3, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_03c.png](./figures/figure_03c.png) Panel C of Figure 3, created and exported from [full_script.R](./code/full_script.R)
+ * [figure_s01.png](./figures/figure_s01.png) Figure S1. This is exported from the [figure_s01.pptx](./figures/figure_s01.pptx) file.
+ * [figure_s01.pptx](./figures/figure_s01.pptx) PowerPoint file used to annotate Figure S1
+ * [figure_s02.png](./figures/figure_s02.png) Figure S2, created and exported from [full_script.R](./code/full_script.R)
+
 ### results
