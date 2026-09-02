@@ -68,3 +68,6 @@ results suggest a need to consider landscape context when evaluating the roles o
  * [figure_s02.png](./figures/figure_s02.png) Figure S2, created and exported from [full_script.R](./code/full_script.R)
 
 ### results
+ * [detection_model_v01.RData](./results/detection_model_v01.RData) `glmmTMB` model object, named `m1`, for occurrence analysis. Code to perform final data formatting and model fitting is in [full_script.R](./code/full_script.R), but the model object is provided here as a shortcut to avoid rerunning model if need be (moderately computationally intensive; took ~20 minutes to fit on a desktop)
+ * [richness_model_v01.RData](./results/richness_model_v01.RData) `glmmTMB` model object, named `sr_m1`, for richness analysis. Code to perform final data formatting and model fitting is in [full_script.R](./code/full_script.R), but the model object is provided here as a shortcut to avoid rerunning model if need be (moderately computationally intensive; took ~5 minutes to fit on a desktop)
+ * 
