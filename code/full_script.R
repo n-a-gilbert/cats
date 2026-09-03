@@ -890,7 +890,7 @@ elton <- read.delim(here::here("data/elton_mammal.txt")) |>
 
 mass <- species |> 
   dplyr::left_join(elton) |> 
-  filter(!is.na(mass)) |> 
+  dplyr::filter(! is.na(mass)) |> 
   dplyr::group_by(sp) |> 
   dplyr::summarise(mass = mean(mass))
 
@@ -976,7 +976,7 @@ com <- fixef(m1)$cond |>
                alpha = 0.05) +
     facet_wrap(~name) +
     theme_minimal() +
-    labs(y = "estimated effect (species x city combination)") +
+    labs(y = "slope (species x city combination)") +
     geom_smooth(data = slope_mass, aes(x = log(mass), 
                                        y = estimate),
                 method = "lm",
