@@ -973,22 +973,23 @@ com <- fixef(m1)$cond |>
                linetype = "dashed") +
     geom_point(data = slope_mass, aes(x = log(mass), 
                                       y = estimate),
-               alpha = 0.05) +
+               alpha = 0.1,
+               color = MetBrewer::MetPalettes$Hokusai3[[1]][c(4)]) +
     facet_wrap(~name) +
     theme_minimal() +
     labs(y = "slope (species x city combination)") +
     geom_smooth(data = slope_mass, aes(x = log(mass), 
                                        y = estimate),
                 method = "lm",
-                color = MetBrewer::MetPalettes$Tam[[1]][7],
-                fill = MetBrewer::MetPalettes$Tam[[1]][7]) +
+                color = MetBrewer::MetPalettes$Hokusai3[[1]][c(5)],
+                fill = MetBrewer::MetPalettes$Hokusai3[[1]][c(5)]) +
     geom_label(
       data = slopes, 
       aes(x = log(mass), 
           y = estimate, 
           label = label),
       size = 7 / .pt,
-      color = MetBrewer::MetPalettes$Tam[[1]][7]) +
+      color =MetBrewer::MetPalettes$Hokusai3[[1]][c(5)]) +
     theme(axis.line = element_line(linewidth = 0.2, color = "black"),
           axis.title = element_text(color = "black", 
                                     size = 10),
@@ -999,14 +1000,12 @@ com <- fixef(m1)$cond |>
           plot.background = element_rect(fill = "white", 
                                          color = NA)) )
 
-
 ggsave(
   filename = here::here("figures/figure_02b.png"),
   width = 4,
   height = 3,
   units = "in",
   dpi = 600)
-
 
 #### Create Figure S1: visualizations of correlated random slopes ####
 
@@ -1243,12 +1242,12 @@ city_itx <- sr_m1_re$cond$City |>
                    color  = MetBrewer::MetPalettes$Hokusai3[[1]][c(5)], 
                    fill = MetBrewer::MetPalettes$Hokusai3[[1]][c(4)]) +
     geom_vline(xintercept = 0,
-               color = "black") +
+               color = "black",
+               linetype = "dashed") +
     geom_vline(data = filter(com, param == "ghmSc:pcatSc"),
                aes(xintercept = value), 
                linetype = "dashed", 
-               color = MetBrewer::MetPalettes$Hokusai3[[1]][c(2)],
-               linewidth = 1) +
+               color = "red") +
     theme_minimal() +
     labs(x = "urban x cat interaction", 
          y = "number of cities") +
