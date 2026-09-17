@@ -915,9 +915,54 @@ spuh <- m1r$cond$citySp |>
   dplyr::mutate(hi = ifelse(estimate >= quantile(estimate, 0.975), 1, 0),
                 lo = ifelse(estimate <= quantile(estimate, 0.025), 1, 0))
 
+# approximate population size of every city
+city_pop <- tribble(
+  ~city, ~city_name, ~pop,
+  "ahga","Athens, GA",129000,
+  "atga","Atlanta, GA",505000,
+  "autx","Austin, TX",1000000,
+  "baar","Bariloche, Argentina",135000,
+  "bege","Berlin, Germany",3900000,
+  "boma","Boston, MA",675000,
+  "cait","Campobasso, Italy",47000,
+  "chil","Chicago, IL",2720000,
+  "cloh","Cleveland, OH",365000,
+  "ctsa","Cape Town, South Africa",4900000,
+  "deio","Des Moines, IA",216000,
+  "dftx","Fort Worth, TX",1020000,
+  "edca","Edmonton, Canada",1120000,
+  "eptx","El Paso, TX",680000,
+  "foco","Fort Collins, CO",175000,
+  "frge","Freiburg, Germany",236000,
+  "hote","Houston, TX",2390000,
+  "inin","Indianapolis, IN",892000,
+  "ioio","Iowa City, IA",76000,
+  "jams","Jackson, MS",145000,
+  "lrar","Little Rock, AR",204000,
+  "maks","Manhattan, KS",55000,
+  "manh","Manchester, NH",116000,
+  "mawi","Madison, WI",286000,
+  "mela","Los Angeles, CA",3820000,
+  "mxmx","Mexico City, Mexico",9200000,
+  "naca","Washington, DC",703000,
+  "nyny","New York, NY",8480000,
+  "phaz","Phoenix, AZ",1690000,
+  "poor","Portland, OR",635000,
+  "rony","Rochester, NY",211000,
+  "sasa","Saskatoon, Canada",345000,
+  "sewa","Seattle, WA",796000,
+  "sfsd","Sioux Falls, SD",221000,
+  "slmo","St. Louis, MO",279000,
+  "sluh","Salt Lake City, UT",210000,
+  "stok","Stillwater, OK",50000,
+  "tawa","Tacoma, WA",225000,
+  "vaca","Vancouver, Canada",690000,
+  "wide","Wilmington, DE",72000)
+
 slope_mass <- spuh |> 
   dplyr::rename(sp = species) |> 
-  dplyr::left_join(mass)
+  dplyr::left_join(mass) |> 
+  dplyr::left_join(city_pop)
 
 name_list <- unique(slope_mass$param)
 res_tab <- list(list())
@@ -1094,6 +1139,86 @@ ggsave(
   width = 5, 
   height = 3, 
   units = "in", 
+  dpi = 600)
+
+#### Create Figure S3: post hoc analysis of parameter estimates versus city population ####
+
+res_tab_pop <- list(list())
+# post hoc analysis: do random slopes vary with city population size
+for(i in 1:length(name_list)){
+  
+  print(name_list[i])
+  
+  slope_m <- glmmTMB::glmmTMB(
+    estimate ~ 1 + log(pop) + (1|city),
+    data = filter(slope_mass, param == name_list[i]))
+  
+  res_tab_pop[[i]] <- summary(slope_m)$coefficients$cond |>
+    tibble::as_tibble(rownames = "param") |>
+    dplyr::filter(param == "log(pop)") |>
+    janitor::clean_names() |>
+    tibble::add_column(param_name = name_list[i] )
+  
+  rm(slope_m)
+}
+
+slopes_pop <- bind_rows(res_tab_pop) |> 
+  dplyr::select(-param) |> 
+  dplyr::rename(param = param_name) |> 
+  dplyr::left_join(
+    slope_mass |> 
+      dplyr::ungroup() |> 
+      dplyr::select(param, name) |> 
+      dplyr::distinct()) |> 
+  dplyr::mutate(pval = round(pr_z, 2)) |> 
+  dplyr::mutate(pval = ifelse(pval == 0, "p < 0.01",
+                              paste0( "p = ", pval))) |> 
+  
+  dplyr::mutate(label = paste0( sprintf( "%.2f", round(estimate, 2)), " ± ",
+                                sprintf("%.2f", round(std_error, 2)), ", ", pval)) |> 
+  dplyr::select(name, label) |> 
+  tibble::add_column( pop = exp(13.40), 
+                      estimate = -2)
+
+( figure_s3 <- ggplot() +
+    geom_hline(yintercept = 0, color = "black", linetype = "dashed") +
+    geom_hline(data = com, aes(yintercept = estimate), color = MetBrewer::MetPalettes$Tam[[1]][4],
+               linetype = "dashed") +
+    geom_point(data = slope_mass, aes(x = log(pop), 
+                                      y = estimate),
+               alpha = 0.1,
+               color = MetBrewer::MetPalettes$Hokusai3[[1]][c(4)]) +
+    facet_wrap(~name) +
+    theme_minimal() +
+    labs(y = "slope (species x city combination)",
+         x = "log(human population of city)") +
+    geom_smooth(data = slope_mass, aes(x = log(pop), 
+                                       y = estimate),
+                method = "lm",
+                color = MetBrewer::MetPalettes$Hokusai3[[1]][c(5)],
+                fill = MetBrewer::MetPalettes$Hokusai3[[1]][c(5)]) +
+    geom_label(
+      data = slopes_pop, 
+      aes(x = log(pop), 
+          y = estimate, 
+          label = label),
+      size = 7 / .pt,
+      color =MetBrewer::MetPalettes$Hokusai3[[1]][c(5)]) +
+    theme(axis.line = element_line(linewidth = 0.2, color = "black"),
+          axis.title = element_text(color = "black", 
+                                    size = 10),
+          axis.text = element_text(color = "black", 
+                                   size = 8),
+          strip.text = element_text(color = "black", 
+                                    size = 10),
+          plot.background = element_rect(fill = "white", 
+                                         color = NA)) )
+
+ggsave(
+  filename = here::here("figures/figure_s03.png"),
+  width = 4,
+  height = 3,
+  units = "in",
   dpi = 600)
 
 #### Fit richness model ####
@@ -1537,7 +1662,7 @@ overall <- pdat |>
                   group = City),
               color = MetBrewer::MetPalettes$Hokusai3[[1]][c(2)],
               alpha = 0.4,
-              linewidth = 0.4) +
+              linewidth = 0.9) +
     geom_ribbon(
       data = overall, 
       aes(x = ghm,
