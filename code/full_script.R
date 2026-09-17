@@ -6,21 +6,32 @@
 # coordinates of sites and resulting data cannot be shared to protect the data from
 # being used for other analyses/purposes without approval from the UWIN committee
 
-library(here)
-library(tidyverse)
-library(readxl)
-library(sf)
-library(janitor)
-library(glmmTMB)
-library(flextable)
-library(officer)
-library(patchwork)
-library(MetBrewer)
-library(rnaturalearth)
-library(rnaturalearthdata)
-library(wesanderson)
-library(tidyterra)
-library(terra)
+rm(list = ls())
+
+packages <- c(
+  "here",
+  "tidyverse",
+  "readxl",
+  "sf",
+  "janitor",
+  "glmmTMB",
+  "flextable",
+  "officer",
+  "patchwork",
+  "MetBrewer",
+  "rnaturalearth",
+  "rnaturalearthdata",
+  "wesanderson",
+  "tidyterra",
+  "terra")
+
+installed <- packages %in% rownames(installed.packages())
+
+if (any(!installed)) {
+  install.packages(packages[!installed])
+}
+
+lapply(packages, library, character.only = TRUE)
 
 #### Data formatting ####
 
