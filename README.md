@@ -2,7 +2,7 @@
 
 ### [Neil A. Gilbert](https://gilbertecology.com) and the [Urban Wildlife Information Network](https://www.urbanwildlifeinfo.org/)
 
-### Data/code DOI: [![DOI](https://zenodo.org/badge/1353634095.svg)](https://doi.org/10.5281/zenodo.22836684)
+### Data/code DOI: [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22836684-blue.svg)](https://doi.org/10.5281/zenodo.22836684)
 
 ### Link to paper: TBD
 
