@@ -772,10 +772,23 @@ lapply(packages, library, character.only = TRUE)
 
 load(here::here("data/formatted_data.RData"))
 
-final <- all |> 
+all |> 
+  filter(City == "ctsa") |> 
+  dplyr::mutate(Species = stringr::str_replace_all(Species, "cape_ground_squirrel", "gray_squirrel_sp")) |> 
+  dplyr::group_by(Species, City, Site, Season, start, end, ghm, ncat, pcat) |> 
+  dplyr::summarise( Y = sum(Y), 
+                    J = max(J))
+
+final <- all |>
   dplyr::group_by(City, Species) |> 
   dplyr::mutate(n = sum(Y)) |> 
-  dplyr::filter(n > 0) |> 
+  dplyr::filter(n > 0) |>
+  dplyr::mutate(Species = stringr::str_replace_all(Species, "cape_ground_squirrel", "gray_squirrel_sp")) |>
+  dplyr::group_by(Species, City, Site, Season, start, end, ghm, ncat, pcat) |>
+  dplyr::summarise( Y = sum(Y),
+                    J = max(J)) |>
+  dplyr::arrange(City, Site, Season, Species) |> 
+  dplyr::group_by(City, Species) |> 
   dplyr::mutate(citySp = dplyr::cur_group_id()) |> 
   dplyr::group_by(City, Species, Site) |> 
   dplyr::mutate(citySpSite = dplyr::cur_group_id()) |> 
